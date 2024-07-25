@@ -12,24 +12,26 @@ public class ProgramaFeiraArtesanatoRioTinto {
             String opcao = JOptionPane.showInputDialog("Digite uma opção:\n1.Cadastrar" +
                     "\n2.Pesquisar pelo nome\n3.Pesquisar pelo código\n4.Sair").toLowerCase();
 
-            if (opcao.equals("1")) {
+            if (opcao.equals("1")){
                 //Cadastrar
+                String tipoItem = JOptionPane.showInputDialog("Qual o tipo de item?\n1.Roupa\n2.Estátua");
+                if (tipoItem.equals("1")){
+                    Roupa item = new Roupa();
+                    String codigo = JOptionPane.showInputDialog("Qual o código?");
+                    item.setCodigo(codigo);
+                    item.setNome(JOptionPane.showInputDialog("Qual o nome do item?"));
+                    item.setPreco(Double.parseDouble(JOptionPane.showInputDialog("Qual o preço do item?")));
+                    String tamanho = JOptionPane.showInputDialog("Qual o tamanho da roupa?");
+                    item.setTamanho(tamanho);
 
-                Roupa item = new Roupa();
-                String codigo = JOptionPane.showInputDialog("Qual o código do produto?");
-                item.setCodigo(codigo);
-                item.setNome(JOptionPane.showInputDialog("Qual o nome do produto?"));
-                item.setPreco(Double.parseDouble(JOptionPane.showInputDialog("Qual o preço do produto?")));
-            }
-                try {
-                    sistema.cadastraItem(item);
-                    JOptionPane.showMessageDialog(null, "Item cadastrado com sucesso!");
-
-                } catch (Exception e) {
-                    JOptionPane.showMessageDialog(null, e.getMessage());
-                    e.printStackTrace();
+                    try {
+                        sistema.cadastraItem(item);
+                        JOptionPane.showMessageDialog(null, "Item cadastrado com sucesso:"+ item.toString());
+                    } catch (Exception e){
+                        JOptionPane.showMessageDialog(null, e.getMessage());
+                        e.printStackTrace();
+                    }
                 }
-            }
 
             else if (opcao.equals("2")) {
                 String nomeItemAPesquisar = JOptionPane.showInputDialog("Digite o nome do " +
