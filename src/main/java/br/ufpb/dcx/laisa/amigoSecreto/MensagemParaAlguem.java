@@ -1,15 +1,15 @@
 package br.ufpb.dcx.laisa.amigoSecreto;
 
 public class MensagemParaAlguem extends Mensagem {
-
     private String emailDestinatario;
-    public MensagemParaAlguem(String texto, String emailRemetente, boolean anonima) {
+
+    public MensagemParaAlguem(String texto, String emailRemetente, String emailDestinatario, boolean anonima) {
         super(texto, emailRemetente, anonima);
         this.emailDestinatario = emailDestinatario;
     }
 
     public MensagemParaAlguem() {
-        this("", "", false);
+        this("", "", "", false);
     }
 
     public String getEmailDestinatario() {

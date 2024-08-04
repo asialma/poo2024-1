@@ -16,20 +16,15 @@ public class SistemaAmigo {
         this(null, null);
     }
 
-    public void cadastraAmigo(String nomeAmigo, String emailAmigo) throws AmigoJaCadastradoException {
-        for (Amigo a : amigos) {
-            if (a.getNomeAmigo().equals(nomeAmigo) && a.getEmailAmigo().equals(emailAmigo)) {
-                throw new AmigoJaCadastradoException("Amigo já cadastrado no sistema");
-            } else {
-                Amigo amigo = new Amigo(nomeAmigo, emailAmigo);
-                this.amigos.add(amigo);
-            }
-        }
+    public void cadastraAmigo(String nomeAmigo, String emailAmigo) {
+        Amigo amigo = new Amigo(nomeAmigo, emailAmigo);
+        this.amigos.add(amigo);
     }
+
 
     public Amigo pesquisaAmigo(String emailAmigo) {
         for (Amigo a : amigos) {
-            if (a.getEmailAmigo().equals(emailAmigo)) {
+            if (a.getEmailAmigo().equalsIgnoreCase(emailAmigo)) {
                 return a;
             }
         }
@@ -37,11 +32,13 @@ public class SistemaAmigo {
     }
 
     public void enviarMensagemParaTodos(String texto, String emailRemetente, boolean ehAnonima) {
-        mensagens.add(new MensagemParaAlguem(texto, emailRemetente, ehAnonima));
+        Mensagem mensagem = new MensagemParaTodos(texto, emailRemetente, ehAnonima);
+        mensagens.add(mensagem);
     }
 
     public void enviarMensagemParaAlguem(String texto, String emailRemetente, String emailDestinatario, boolean ehAnonima) {
-        mensagens.add(new MensagemParaAlguem());
+        Mensagem mensagem = new MensagemParaAlguem(texto, emailRemetente, emailDestinatario, ehAnonima);
+        this.mensagens.add(mensagem);
     }
 
     public List<Mensagem> pesquisaMensagensAnonimas() {
@@ -55,31 +52,33 @@ public class SistemaAmigo {
     }
 
     public List<Mensagem> pesquisaTodasAsMensagens() {
-        return new ArrayList<>(mensagens);
+        return mensagens;
     }
 
     public void configuraAmigoSecreto(String emailDaPessoa, String emailAmigoSorteado) throws AmigoInexistenteException {
-        for (Amigo a : amigos) {
-            if (a.getEmailAmigo().equals(emailDaPessoa)) {
+        int cont = 0;
+        for (Amigo a : this.amigos) {
+            if (a.getEmailAmigo().equalsIgnoreCase(emailDaPessoa)) {
                 a.setEmailAmigoSorteado(emailAmigoSorteado);
-            } else {
-                throw new AmigoInexistenteException("Amigo não cadastrado no sistema");
+                cont++;
             }
+        }
+        if (cont == 0) {
+            throw new AmigoInexistenteException("Não existe um amigo com esse email cadastrado");
         }
     }
 
     public String pesquisaAmigoSecretoDe(String emailDaPessoa) throws AmigoInexistenteException, AmigoNaoSorteadoException {
-        for (Amigo a : amigos) {
-            if (a.getEmailAmigo().equals(emailDaPessoa)) {
-                if (a.getEmailAmigoSorteado().isEmpty()) {
-                    throw new AmigoNaoSorteadoException("O amigo não foi sorteado!");
-                } else {
+        for (Amigo a : this.amigos) {
+            if (a.getEmailAmigo().equalsIgnoreCase(emailDaPessoa)) {
+                if (a.getEmailAmigoSorteado() != null) {
                     return a.getEmailAmigoSorteado();
+                } else {
+                    throw new AmigoNaoSorteadoException("Esse amigo ainda não tem um amigo secreto cadastrado");
                 }
             }
         }
-        throw new AmigoInexistenteException("Amigo não cadastrado no sistema");
+        throw new AmigoInexistenteException("Não existe um amigo com esse email");
     }
-
 
 }
