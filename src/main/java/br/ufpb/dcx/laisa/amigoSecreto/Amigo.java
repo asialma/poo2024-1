@@ -3,42 +3,41 @@ package br.ufpb.dcx.laisa.amigoSecreto;
 import java.util.Objects;
 
 public class Amigo {
-    private String nome;
-    private String email;
-    private String amigoSorteado;
+    private String nomeAmigo;
+    private String emailAmigo;
+    private String emailAmigoSorteado;
 
-    public Amigo (String nome, String email, String amigoSorteado){
-        this.nome = nome;
-        this.email = email;
-        this.amigoSorteado = amigoSorteado;
+    public Amigo(String nomeAmigo, String emailAmigo) {
+        this.nomeAmigo = emailAmigo;
+        this.emailAmigo = emailAmigo;
     }
 
-    public Amigo(){
-        this("", "", "");
+    public Amigo() {
+        this("", "");
     }
 
-    public String getNome() {
-        return nome;
+    public String getNomeAmigo() {
+        return nomeAmigo;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setNomeAmigo(String nomeAmigo) {
+        this.nomeAmigo = nomeAmigo;
     }
 
-    public String getEmail(){
-        return email;
+    public String getEmailAmigo() {
+        return emailAmigo;
     }
 
-    public void setEmail(){
-        this.email = email;
+    public void setEmailAmigo(String emailAmigo) {
+        this.emailAmigo = emailAmigo;
     }
 
-    public String getAmigoSorteado() {
-        return amigoSorteado;
+    public String getEmailAmigoSorteado() {
+        return emailAmigoSorteado;
     }
 
-    public void setAmigoSorteado(String amigoSorteado) {
-        this.amigoSorteado = amigoSorteado;
+    public void setEmailAmigoSorteado(String amigoSorteado) {
+        this.emailAmigoSorteado = emailAmigoSorteado;
     }
 
     @Override
@@ -48,25 +47,25 @@ public class Amigo {
 
         Amigo amigo = (Amigo) o;
 
-        if (!Objects.equals(nome, amigo.nome)) return false;
-        if (!Objects.equals(email, amigo.email)) return false;
-        return Objects.equals(amigoSorteado, amigo.amigoSorteado);
+        if (!Objects.equals(nomeAmigo, amigo.nomeAmigo)) return false;
+        if (!Objects.equals(emailAmigo, amigo.emailAmigo)) return false;
+        return Objects.equals(emailAmigoSorteado, amigo.emailAmigoSorteado);
     }
 
     @Override
     public int hashCode() {
-        int result = nome != null ? nome.hashCode() : 0;
-        result = 31 * result + (email != null ? email.hashCode() : 0);
-        result = 31 * result + (amigoSorteado != null ? amigoSorteado.hashCode() : 0);
+        int result = nomeAmigo != null ? nomeAmigo.hashCode() : 0;
+        result = 31 * result + (emailAmigo != null ? emailAmigo.hashCode() : 0);
+        result = 31 * result + (emailAmigoSorteado != null ? emailAmigoSorteado.hashCode() : 0);
         return result;
     }
 
     @Override
     public String toString() {
         return "Amigo{" +
-                "nome='" + nome + '\'' +
-                ", email='" + email + '\'' +
-                ", amigoSorteado='" + amigoSorteado + '\'' +
+                "nome='" + nomeAmigo + '\'' +
+                ", email='" + emailAmigo + '\'' +
+                ", amigoSorteado='" + emailAmigoSorteado + '\'' +
                 '}';
     }
 }

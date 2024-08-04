@@ -12,7 +12,8 @@ public class MensagemParaTodos extends Mensagem{
 
     @Override
     public String getTextoCompletoAExibir() {
-        return "Mensagem de " + getEmailRemetente() + " para todos."
+        return "Mensagem de " + super.toString()
+                + getEmailRemetente() + " para todos."
                 + "\nTexto da mensagem: ";
     }
 }

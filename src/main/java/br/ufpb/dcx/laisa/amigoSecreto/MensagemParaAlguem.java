@@ -32,4 +32,11 @@ public class MensagemParaAlguem extends Mensagem {
                   +"\nTexto da mensagem: " + getTexto();
         }
     }
+
+    @Override
+    public String toString() {
+        return "MensagemParaAlguem{" + super.toString() +
+                "emailDestinatario='" + emailDestinatario + '\'' +
+                '}';
+    }
 }
