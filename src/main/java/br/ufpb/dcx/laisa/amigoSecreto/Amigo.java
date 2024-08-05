@@ -8,7 +8,7 @@ public class Amigo {
     private String emailAmigoSorteado;
 
     public Amigo(String nomeAmigo, String emailAmigo) {
-        this.nomeAmigo = emailAmigo;
+        this.nomeAmigo = nomeAmigo;
         this.emailAmigo = emailAmigo;
     }
 
