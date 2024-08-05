@@ -115,6 +115,7 @@ public class TestaSistemaAmigo {
         }
 
 //      f) Pesquise o e-mail do amigo secreto de José e veja se é o e-mail de Maria, imprimindo “Ok” caso seja.
+        //TODO Consertar o erro da pesquisa
         String amigo = JOptionPane.showInputDialog("Digite o email do amigo");
         String amigoSecretoDe = JOptionPane.showInputDialog("Digite o email do amigo secreto");
         try {

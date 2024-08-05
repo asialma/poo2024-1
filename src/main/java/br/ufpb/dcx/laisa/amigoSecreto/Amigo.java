@@ -36,7 +36,7 @@ public class Amigo {
         return emailAmigoSorteado;
     }
 
-    public void setEmailAmigoSorteado(String amigoSorteado) {
+    public void setEmailAmigoSorteado(String emailAmigoSorteado) {
         this.emailAmigoSorteado = emailAmigoSorteado;
     }
 
