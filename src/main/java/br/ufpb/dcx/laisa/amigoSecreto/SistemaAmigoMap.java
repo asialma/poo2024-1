@@ -18,12 +18,15 @@ public class SistemaAmigoMap {
             throw new AmigoJaCadastradoException("Amigo já cadastrado!");
         }
         Amigo amigo = new Amigo(nomeAmigo, emailAmigo);
-        amigos.put(nomeAmigo, amigo);
+        amigos.put(emailAmigo, amigo);
     }
 
-
-    public Amigo pesquisaAmigo(String emailAmigo) throws AmigoInexistenteException {
-        return null;
+    public Amigo pesquisaAmigo(String emailAmigo) throws AmigoInexistenteException{
+        if (amigos.containsKey(emailAmigo)) {
+            return amigos.get(emailAmigo);
+        } else {
+            throw new AmigoInexistenteException("Amigo não cadastrado");
+        }
     }
 
     public void enviarMensagemParaTodos(String texto, String emailRemetente, boolean ehAnonima) {
@@ -51,10 +54,21 @@ public class SistemaAmigoMap {
     }
 
     public void configuraAmigoSecreto(String emailDaPessoa, String emailAmigoSorteado) throws AmigoInexistenteException {
-
+        Amigo amigo = amigos.get(emailDaPessoa);
+        if (amigo == null) {
+            throw new AmigoInexistenteException("Não existe um amigo com esse email cadastrado");
+        }
+        amigo.setEmailAmigoSorteado(emailAmigoSorteado);
     }
 
-    public String pesquisaAmigoSecretoDe(String emailDaPessoa) throws AmigoInexistenteException, AmigoNaoSorteadoException, AmigoJaCadastradoException {
-        return null;
+    public String pesquisaAmigoSecretoDe(String emailDaPessoa) throws AmigoInexistenteException, AmigoNaoSorteadoException {
+        Amigo amigo = amigos.get(emailDaPessoa);
+        if (amigo == null) {
+            throw new AmigoInexistenteException("Não existe um amigo com esse email");
+        }
+        if (amigo.getEmailAmigoSorteado() == null) {
+            throw new AmigoNaoSorteadoException("Esse amigo ainda não tem um amigo secreto cadastrado");
+        }
+        return amigo.getEmailAmigoSorteado();
     }
 }
