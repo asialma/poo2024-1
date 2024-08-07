@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Objects;
 
-public class Usuario {
+public class Usuario{
     private String matricula;
     private String nome;
     private TipoUsuario tipo;

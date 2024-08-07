@@ -4,7 +4,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
-public interface SistemaBiblioteca {
+public interface SistemaBiblioteca  {
     public boolean pegarLivro(String matriculaUsuario, String idLivro)
             throws UsuarioInexistenteException, LivroInexistenteException;
     public boolean devolverLivro(String matriculaUsuario, String idLivro)

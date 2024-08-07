@@ -2,7 +2,7 @@ package br.ufpb.dcx.laisa.sistemaBiblioteca;
 
 import java.util.*;
 
-public class Livro {
+public class Livro{
     private String id;
     private String titulo;
     private List<String> autores;

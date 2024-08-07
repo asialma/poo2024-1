@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class SistemaBibliotecaCCAE implements SistemaBiblioteca{
+public class SistemaBibliotecaCCAE implements SistemaBiblioteca {
     private Map<String, Livro> livros;
     private Map<String, Usuario> usuarios;
 
