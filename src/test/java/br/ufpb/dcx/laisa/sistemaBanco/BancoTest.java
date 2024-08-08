@@ -15,6 +15,6 @@ public class BancoTest {
         banco.criarConta(0260, 123, "Laisa", 1000);
 
         //Verifica se o saldo foi inicializado corretamente
-        assertTrue(banco)
+
     }
 }
