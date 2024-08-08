@@ -1,5 +1,6 @@
 package br.ufpb.dcx.laisa.sistemaBiblioteca;
 
+import javax.swing.plaf.PanelUI;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
@@ -12,6 +13,10 @@ public class SistemaBibliotecaCCAE implements SistemaBiblioteca {
     public SistemaBibliotecaCCAE(Map<String, Livro> livros, Map<String, Usuario> usuarios) {
         this.livros = new HashMap<>();
         this.usuarios = new HashMap<>();
+    }
+
+    public SistemaBibliotecaCCAE(){
+        this(null, null);
     }
 
     @Override
@@ -63,12 +68,12 @@ public class SistemaBibliotecaCCAE implements SistemaBiblioteca {
 
     @Override
     public Map<String, Livro> getTodosOsLivros() {
-        return null;
+        return livros;
     }
 
     @Override
     public Collection<Usuario> getUsuarios() {
-        return null;
+        return usuarios.values();
     }
 
     @Override

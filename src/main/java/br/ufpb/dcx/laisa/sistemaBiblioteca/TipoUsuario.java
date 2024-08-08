@@ -1,5 +1,5 @@
 package br.ufpb.dcx.laisa.sistemaBiblioteca;
 
-public enum TipoUsuario{
+public enum TipoUsuario {
     PROFESSOR, ALUNO, FUNCIONARIO
 }
